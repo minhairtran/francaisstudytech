@@ -1,0 +1,142 @@
+:root {
+  --appBgColor: #f1faee;
+  --frenchBlue: #002654;
+  --frenchRed: #ce1126;
+  --borderRadiusSmall: 5px;
+  --borderRadiusMedium: 10px;
+  --borderRadiusLarge: 15px;
+  --fontSmall: 12px;
+  --fontMedium: 24px;
+  --fontLarge: 32px;
+  --smallSize: 10px;
+  --mediumSize: 30px;
+  --largeSize: 50px;
+  --buttonWidth: 183px;
+  --buttonHeight: 60px;
+  --transitionTime: 0.3s;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.container {
+  background-color: var(--appBgColor);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.container .signin {
+  position: absolute;
+  top: 100px;
+  left: 470px;
+  width: 525px;
+  height: 525px;
+  background-color: white;
+  border-radius: var(--borderRadiusMedium);
+  border: 1px solid var(--frenchBlue);
+}
+
+.container .signin img {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10%;
+}
+
+.container .signin .registration-link {
+  margin-right: var(--mediumSize);
+  float: right;
+}
+
+.container .signin .continue-button {
+  margin-right: var(--mediumSize);
+  margin-top: var(--mediumSize);
+  float: right;
+}
+
+.container .signin .disable-button {
+  margin-right: var(--mediumSize);
+  margin-top: var(--mediumSize);
+  float: right;
+}
+
+.container .signin .form {
+  margin-left: var(--mediumSize);
+  margin-top: var(--mediumSize);
+  margin-bottom: var(--smallSize);
+}
+
+.container .signin .form .input-container{
+  margin-bottom: var(--smallSize);
+}
+
+.input-container {
+  font-size: var(--fontMedium);
+}
+
+.input-container .input {
+  height: 60px;
+  width: 435px;
+  border: 1px solid var(--frenchBlue);
+  border-radius: var(--borderRadiusLarge);
+  font-size: var(--fontMedium);
+  padding-left: var(--mediumSize);
+}
+
+.input-container .input:focus {
+  outline: none;
+}
+
+.input-container .title {
+  margin-bottom: var(--smallSize);
+}
+
+.continue-button {
+  border-radius: var(--borderRadiusSmall);
+  width: var(--buttonWidth);
+  height: var(--buttonHeight);
+  border: 1px solid var(--frenchBlue);
+  font-size: var(--fontMedium);
+  color: white;
+  background-color: var(--frenchBlue);
+  cursor: pointer;
+}
+
+.continue-button:hover {
+  background-color: white;
+  color: var(--frenchBlue);
+  transition: var(--transitionTime);
+}
+
+.continue-button:focus {
+  outline: none;
+}
+
+.disable-button {
+  border-radius: var(--borderRadiusSmall);
+  width: var(--buttonWidth);
+  height: var(--buttonHeight);
+  font-size: var(--fontMedium);
+}
+
+.error {
+  color: var(--frenchRed);
+  font-size: var(--fontSmall);
+}
+
+a a:hover, a:visited, a:link, a:active {
+  text-decoration: none;
+  color: var(--frenchBlue);
+}
