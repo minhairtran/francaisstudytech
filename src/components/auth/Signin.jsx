@@ -53,7 +53,7 @@ const Signin = (props) => {
             type="password"
           />
         </div>
-
+        <Link className="forget-password" to="/">Quên mật khẩu</Link>
         <Button
           className="continue-button"
           title="Tiếp tục"

@@ -57,6 +57,9 @@ const Signup = (props) => {
             onFocus={handleError}
             type="password"
           />
+          {signupError && (
+            <Error errorMessage="Email hoặc mật khẩu không tồn tại" />
+          )}
           <Input
             placeholder="Nhập lại mật khẩu của bạn"
             title="Xác nhận mật khẩu"
@@ -64,6 +67,9 @@ const Signup = (props) => {
             onFocus={handleError}
             type="password"
           />
+          {signupError && (
+            <Error errorMessage="Email hoặc mật khẩu không tồn tại" />
+          )}
         </div>
 
         <Button

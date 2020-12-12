@@ -134,15 +134,15 @@ a:active {
 }
 
 .container .registration .continue-button {
-  margin-right: var(--mediumSize);
-  margin-top: var(--mediumSize);
-  float: right;
+  position: absolute;
+  left: 317px;
+  bottom: 20px;
 }
 
 .container .registration .disable-button {
-  margin-right: var(--mediumSize);
-  margin-top: var(--mediumSize);
-  float: right;
+  position: absolute;
+  left: 317px;
+  bottom: 20px;
 }
 
 .container .registration .form {
@@ -153,6 +153,12 @@ a:active {
 
 .container .registration .form .input-container {
   margin-bottom: var(--smallSize);
+}
+
+.container .registration .forget-password {
+  left: 30px;
+  position: absolute;
+  bottom: 43px;
 }
 
 /*signup*/
@@ -181,15 +187,15 @@ a:active {
 }
 
 .container .signup .continue-button {
-  margin-right: var(--mediumSize);
-  margin-top: var(--mediumSize);
-  float: right;
+  position: absolute;
+  left: 317px;
+  bottom: 20px;
 }
 
 .container .signup .disable-button {
-  margin-right: var(--mediumSize);
-  margin-top: var(--mediumSize);
-  float: right;
+  position: absolute;
+  left: 317px;
+  bottom: 20px;
 }
 
 .container .signup .form {
