@@ -30,57 +30,7 @@ code {
     monospace;
 }
 
-.container {
-  background-color: var(--appBgColor);
-  width: 100%;
-  height: 100%;
-  position: absolute;
-}
-
-.container .signin {
-  position: absolute;
-  top: 100px;
-  left: 470px;
-  width: 525px;
-  height: 525px;
-  background-color: white;
-  border-radius: var(--borderRadiusMedium);
-  border: 1px solid var(--frenchBlue);
-}
-
-.container .signin img {
-  display: flex;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 10%;
-}
-
-.container .signin .registration-link {
-  margin-right: var(--mediumSize);
-  float: right;
-}
-
-.container .signin .continue-button {
-  margin-right: var(--mediumSize);
-  margin-top: var(--mediumSize);
-  float: right;
-}
-
-.container .signin .disable-button {
-  margin-right: var(--mediumSize);
-  margin-top: var(--mediumSize);
-  float: right;
-}
-
-.container .signin .form {
-  margin-left: var(--mediumSize);
-  margin-top: var(--mediumSize);
-  margin-bottom: var(--smallSize);
-}
-
-.container .signin .form .input-container{
-  margin-bottom: var(--smallSize);
-}
+/*Reusable components*/
 
 .input-container {
   font-size: var(--fontMedium);
@@ -136,7 +86,118 @@ code {
   font-size: var(--fontSmall);
 }
 
-a a:hover, a:visited, a:link, a:active {
+a a:hover,
+a:visited,
+a:link,
+a:active {
   text-decoration: none;
   color: var(--frenchBlue);
+}
+
+.policy-contact {
+  position: absolute;
+  top: 690px;
+  left: 100px;
+}
+
+/*pages*/
+/*signin*/
+
+.container {
+  background-color: var(--appBgColor);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.container .registration {
+  position: absolute;
+  top: 40px;
+  left: 470px;
+  width: 525px;
+  height: 525px;
+  background-color: white;
+  border-radius: var(--borderRadiusMedium);
+  border: 1px solid var(--frenchBlue);
+}
+
+.container .registration img {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10%;
+}
+
+.container .registration .registration-link {
+  margin-right: var(--mediumSize);
+  float: right;
+}
+
+.container .registration .continue-button {
+  margin-right: var(--mediumSize);
+  margin-top: var(--mediumSize);
+  float: right;
+}
+
+.container .registration .disable-button {
+  margin-right: var(--mediumSize);
+  margin-top: var(--mediumSize);
+  float: right;
+}
+
+.container .registration .form {
+  margin-left: var(--mediumSize);
+  margin-top: var(--mediumSize);
+  margin-bottom: var(--smallSize);
+}
+
+.container .registration .form .input-container {
+  margin-bottom: var(--smallSize);
+}
+
+/*signup*/
+
+.container .signup {
+  position: absolute;
+  top: 40px;
+  left: 470px;
+  width: 525px;
+  height: 640px;
+  background-color: white;
+  border-radius: var(--borderRadiusMedium);
+  border: 1px solid var(--frenchBlue);
+}
+
+.container .signup img {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10%;
+}
+
+.container .signup .registration-link {
+  margin-right: var(--mediumSize);
+  float: right;
+}
+
+.container .signup .continue-button {
+  margin-right: var(--mediumSize);
+  margin-top: var(--mediumSize);
+  float: right;
+}
+
+.container .signup .disable-button {
+  margin-right: var(--mediumSize);
+  margin-top: var(--mediumSize);
+  float: right;
+}
+
+.container .signup .form {
+  margin-left: var(--mediumSize);
+  margin-top: var(--mediumSize);
+  margin-bottom: var(--smallSize);
+}
+
+.container .signup .form .input-container {
+  margin-bottom: var(--smallSize);
 }

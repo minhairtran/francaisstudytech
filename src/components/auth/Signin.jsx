@@ -4,6 +4,7 @@ import Input from "../sharedComponents/Input";
 import logo from "../../images/Logo.png";
 import Error from "../sharedComponents/Error";
 import { Link } from "react-router-dom";
+import PolicyContact from "../sharedComponents/PolicyContact";
 
 const Signin = (props) => {
   const [email, setEmail] = useState("");
@@ -23,13 +24,12 @@ const Signin = (props) => {
   };
 
   const handleError = () => {
-    console.log("asdasd");
     setSigninError(false);
   };
 
   return (
     <div className="container">
-      <div className="signin">
+      <div className="registration">
         <img src={logo} alt="logo" />
         <div className="registration-link">
           <Link to="/signup">Đăng ký</Link> | <span>Đăng nhập</span>
@@ -47,7 +47,7 @@ const Signin = (props) => {
           )}
           <Input
             placeholder="Nhập mật khẩu của bạn"
-            title="Password"
+            title="Mật khẩu"
             onChange={handlePassword}
             onFocus={handleError}
             type="password"
@@ -61,6 +61,7 @@ const Signin = (props) => {
           onClick={signin}
         />
       </div>
+      <PolicyContact />
     </div>
   );
 };
