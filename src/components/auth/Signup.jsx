@@ -11,6 +11,7 @@ const Signup = (props) => {
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [signupError, setSignupError] = useState(false);
+  const [signupSuccessful, setSignupSuccessful] = useState(false);
 
   const handleEmail = (event) => {
     setEmail(event.target.value);
@@ -26,6 +27,7 @@ const Signup = (props) => {
 
   const signup = () => {
     setSignupError(true);
+    setSignupSuccessful(true)
   };
 
   const handleError = () => {
@@ -39,45 +41,56 @@ const Signup = (props) => {
         <div className="registration-link">
           <span>Đăng ký</span> | <Link to="/signin">Đăng nhập</Link>
         </div>
-        <div className="form">
-          <Input
-            placeholder="Nhập email của bạn"
-            title="Email"
-            onChange={handleEmail}
-            type="email"
-            onFocus={handleError}
-          />
-          {signupError && (
-            <Error errorMessage="Email hoặc mật khẩu không tồn tại" />
-          )}
-          <Input
-            placeholder="Nhập mật khẩu của bạn"
-            title="Mật khẩu"
-            onChange={handlePassword}
-            onFocus={handleError}
-            type="password"
-          />
-          {signupError && (
-            <Error errorMessage="Email hoặc mật khẩu không tồn tại" />
-          )}
-          <Input
-            placeholder="Nhập lại mật khẩu của bạn"
-            title="Xác nhận mật khẩu"
-            onChange={handlePasswordComfirmation}
-            onFocus={handleError}
-            type="password"
-          />
-          {signupError && (
-            <Error errorMessage="Email hoặc mật khẩu không tồn tại" />
-          )}
-        </div>
+        {signupSuccessful ? (
+          <h3 className="signup-successful">
+            Xin chúc mừng bạn đã đăng ký thành công!!! Hãy xác thực email của bạn
+            để bắt đầu nhé
+          </h3>
+        ) : (
+          <div>
+            <div className="form">
+              <Input
+                placeholder="Nhập email của bạn"
+                title="Email"
+                onChange={handleEmail}
+                type="email"
+                onFocus={handleError}
+              />
+              {signupError && (
+                <Error errorMessage="Email hoặc mật khẩu không tồn tại" />
+              )}
+              <Input
+                placeholder="Nhập mật khẩu của bạn"
+                title="Mật khẩu"
+                onChange={handlePassword}
+                onFocus={handleError}
+                type="password"
+              />
+              {signupError && (
+                <Error errorMessage="Email hoặc mật khẩu không tồn tại" />
+              )}
+              <Input
+                placeholder="Nhập lại mật khẩu của bạn"
+                title="Xác nhận mật khẩu"
+                onChange={handlePasswordComfirmation}
+                onFocus={handleError}
+                type="password"
+              />
+              {signupError && (
+                <Error errorMessage="Email hoặc mật khẩu không tồn tại" />
+              )}
+            </div>
 
-        <Button
-          className="continue-button"
-          title="Tiếp tục"
-          status={email && password && passwordConfirmation ? "" : "disable"}
-          onClick={signup}
-        />
+            <Button
+              className="continue-button"
+              title="Tiếp tục"
+              status={
+                email && password && passwordConfirmation ? "" : "disable"
+              }
+              onClick={signup}
+            />
+          </div>
+        )}
       </div>
       <PolicyContact />
     </div>

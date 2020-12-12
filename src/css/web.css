@@ -156,7 +156,7 @@ a:active {
 }
 
 .container .registration .forget-password {
-  left: 30px;
+  left: m;
   position: absolute;
   bottom: 43px;
 }
@@ -184,6 +184,13 @@ a:active {
 .container .signup .registration-link {
   margin-right: var(--mediumSize);
   float: right;
+}
+
+.container .signup .signup-successful {
+  position: absolute;
+  margin-left: var(--mediumSize);
+  top: 43%;
+  font-weight: normal;
 }
 
 .container .signup .continue-button {
