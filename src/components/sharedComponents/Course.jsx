@@ -9,7 +9,7 @@ const Course = (props) => {
           <img src={props.courseImage} alt={props.courseImageAlt} />
           <ul className="name-price">
             <li>{props.courseName}</li>
-            <li>{props.coursePrice}</li>
+            <li>Price: {props.coursePrice}</li>
           </ul>
         </div>
       </Link>

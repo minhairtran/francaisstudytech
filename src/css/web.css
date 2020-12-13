@@ -2,7 +2,8 @@
   --appBgColor: #f1faee;
   --frenchBlue: #002654;
   --frenchRed: #ce1126;
-  --yellow: #DDA15E;
+  --frenchBlueHover: rgba(0, 38, 84, 0.5);
+  --yellow: #dda15e;
   --borderRadiusSmall: 5px;
   --borderRadiusMedium: 10px;
   --borderRadiusLarge: 15px;
@@ -99,28 +100,37 @@ a:active {
 
 .policy-contact {
   position: absolute;
-  bottom: 40px;
-  left: 100px;
+  top: 95%;
+  left: var(--extraLargeSize);
 }
-
+/* 
 .course-link {
-
-}
+} */
 
 .course-link .course-link-content {
+  width: 200px;
+  height: 250px;
+  color: black;
+  background-color: white;
+  font-size: var(--fontMedium);
+}
 
+.course-link .course-link-content:hover {
+  background-color: var(--frenchBlueHover);
+  transition: var(--transitionTime);
 }
 
 .course-link .course-link-content img {
-  
+  width: 200px;
+  height: 100px;
 }
 
-.course-link .course-link-content .name-price {
-  
-}
+/* .course-link .course-link-content .name-price {
+} */
 
 .course-link .course-link-content .name-price li {
-  
+  list-style: none;
+  padding: var(--smallSize) 0px;
 }
 
 /*pages*/
@@ -132,7 +142,7 @@ a:active {
   height: 100%;
   position: absolute;
   /* z-index: 1; */
-  overflow:auto;
+  overflow: auto;
 }
 
 .container .registration {
@@ -250,6 +260,7 @@ a:active {
   height: 40px;
   align-items: center;
   color: var(--frenchBlue);
+  white-space: nowrap;
 }
 
 .container .navbar .home-link {
@@ -287,7 +298,7 @@ a:active {
 }
 
 .container .navbar .level-profile .level progress {
-  margin-left: 30px;
+  margin-left: var(--mediumSize);
   height: 30px;
 }
 
@@ -295,17 +306,23 @@ a:active {
   font-size: var(--fontExtraLarge);
 }
 
-.container .navbar .level-profile .profile .icon:hover{
+.container .navbar .level-profile .profile .icon:hover {
   color: var(--yellow);
   transition: var(--transitionTime);
 }
 
-.container .courses-container{
+.container .courses-container {
   padding: var(--mediumSize) var(--extraLargeSize);
+  position: relative;
 }
 
-.container .courses-container .enrolled-courses{
-}
+/* .container .courses-container .enrolled-courses {
+} */
 
-.container .courses-container .enrolled-courses .enrolled-courses-link{
+.container .courses-container .enrolled-courses .enrolled-courses-link {
+  display: inline-grid;
+  grid-template-columns: 330px 330px 330px 330px;
+  grid-template-rows: 300px 300px;
+  justify-items: center;
+  align-items: center;
 }

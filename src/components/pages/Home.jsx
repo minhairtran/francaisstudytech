@@ -80,8 +80,9 @@ const Home = (props) => {
             {enrolledCourses.map((enrolledCourse, enrolledCourseId) => {})}
           </div>
         </div>
+
+        <PolicyContact />
       </div>
-      <PolicyContact />
     </div>
   );
 };
