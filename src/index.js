@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Signin from "./components/auth/Signin";
 import Signup from "./components/auth/Signup";
 import Home from "./components/pages/Home";
+import Profile from "./components/pages/Profile";
 
 ReactDOM.render(
   <Router>
@@ -16,7 +17,10 @@ ReactDOM.render(
       <Route exact path="/signup">
         <Signup />
       </Route>
-      <Route path="/">
+      <Route exact path="/profile">
+        <Profile />
+      </Route>
+      <Route exact path="/">
         <Home />
       </Route>
     </Switch>
