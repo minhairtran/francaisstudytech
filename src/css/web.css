@@ -2,15 +2,18 @@
   --appBgColor: #f1faee;
   --frenchBlue: #002654;
   --frenchRed: #ce1126;
+  --yellow: #DDA15E;
   --borderRadiusSmall: 5px;
   --borderRadiusMedium: 10px;
   --borderRadiusLarge: 15px;
   --fontSmall: 12px;
   --fontMedium: 24px;
   --fontLarge: 32px;
+  --fontExtraLarge: 40px;
   --smallSize: 10px;
   --mediumSize: 30px;
   --largeSize: 50px;
+  --extraLargeSize: 100px;
   --buttonWidth: 183px;
   --buttonHeight: 60px;
   --transitionTime: 0.3s;
@@ -96,8 +99,28 @@ a:active {
 
 .policy-contact {
   position: absolute;
-  top: 690px;
+  bottom: 40px;
   left: 100px;
+}
+
+.course-link {
+
+}
+
+.course-link .course-link-content {
+
+}
+
+.course-link .course-link-content img {
+  
+}
+
+.course-link .course-link-content .name-price {
+  
+}
+
+.course-link .course-link-content .name-price li {
+  
 }
 
 /*pages*/
@@ -108,6 +131,8 @@ a:active {
   width: 100%;
   height: 100%;
   position: absolute;
+  /* z-index: 1; */
+  overflow:auto;
 }
 
 .container .registration {
@@ -156,7 +181,7 @@ a:active {
 }
 
 .container .registration .forget-password {
-  left: m;
+  left: var(--mediumSize);
   position: absolute;
   bottom: 43px;
 }
@@ -219,8 +244,8 @@ a:active {
 .container .navbar {
   display: flex;
   justify-content: space-between;
-  padding: 30px 100px;
-  font-size: 24px;
+  padding: var(--mediumSize) var(--extraLargeSize);
+  font-size: var(--fontMedium);
   background-color: white;
   height: 40px;
   align-items: center;
@@ -231,13 +256,18 @@ a:active {
   display: flex;
 }
 
+.container .navbar .home-link:hover {
+  color: var(--yellow);
+  transition: var(--transitionTime);
+}
+
 .container .navbar .home-link .home-title {
   padding-top: 4px;
 }
 
 .container .navbar .home-link .icon {
   padding-right: 20px;
-  font-size: 40px;
+  font-size: var(--fontExtraLarge);
 }
 
 .container .navbar .level-profile {
@@ -252,7 +282,7 @@ a:active {
 .container .navbar .level-profile .level .plus-experience {
   position: absolute;
   top: 20px;
-  font-size: 12px;
+  font-size: var(--fontSmall);
   right: 405px;
 }
 
@@ -262,5 +292,20 @@ a:active {
 }
 
 .container .navbar .level-profile .profile .icon {
-  font-size: 40px;
+  font-size: var(--fontExtraLarge);
+}
+
+.container .navbar .level-profile .profile .icon:hover{
+  color: var(--yellow);
+  transition: var(--transitionTime);
+}
+
+.container .courses-container{
+  padding: var(--mediumSize) var(--extraLargeSize);
+}
+
+.container .courses-container .enrolled-courses{
+}
+
+.container .courses-container .enrolled-courses .enrolled-courses-link{
 }
