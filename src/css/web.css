@@ -3,6 +3,7 @@
   --frenchBlue: #002654;
   --frenchRed: #ce1126;
   --frenchBlueHover: rgba(0, 38, 84, 0.5);
+  --yellowHover: rgba(221, 161, 94, 1);
   --yellow: #dda15e;
   --borderRadiusSmall: 5px;
   --borderRadiusMedium: 10px;
@@ -133,6 +134,102 @@ a:active {
   padding: var(--smallSize) 0px;
 }
 
+.lesson-link .lesson-link-content {
+  display: grid;
+  width: 150px;
+  height: 200px;
+  color: black;
+  background-color: white;
+  font-size: var(--fontMedium);
+  grid-template-rows: 100px 100px;
+  justify-items: center;
+  align-items: center;
+}
+
+.lesson-link .lesson-link-content:hover {
+  background-color: var(--yellowHover);
+  transition: var(--transitionTime);
+}
+
+.lesson-link .lesson-link-content img {
+  width: 150px;
+  height: 100px;
+}
+
+.lesson-link .lesson-link-content .name {
+  padding: var(--smallSize) 0px;
+  font-size: var(--fontMedium);
+}
+
+.lesson-link .lesson-link-content .status {
+  height: var(--smallSize);
+  width: var(--smallSize);
+  background-color: none;
+  border-radius: 50%;
+  border: 1px solid var(--frenchBlue);
+  display: inline-block;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--mediumSize) var(--extraLargeSize);
+  font-size: var(--fontMedium);
+  background-color: white;
+  height: 40px;
+  align-items: center;
+  color: var(--frenchBlue);
+  white-space: nowrap;
+}
+
+.navbar .home-link {
+  display: flex;
+}
+
+.navbar .home-link:hover {
+  color: var(--yellow);
+  transition: var(--transitionTime);
+}
+
+.navbar .home-link .home-title {
+  padding-top: 4px;
+}
+
+.navbar .home-link .icon {
+  padding-right: 20px;
+  font-size: var(--fontExtraLarge);
+}
+
+.navbar .level-profile {
+  display: flex;
+}
+
+.navbar .level-profile .level {
+  padding-top: 3px;
+  padding-right: 50px;
+}
+
+.navbar .level-profile .level .plus-experience {
+  position: absolute;
+  top: 20px;
+  font-size: var(--fontSmall);
+  right: 405px;
+}
+
+.navbar .level-profile .level progress {
+  margin-left: var(--mediumSize);
+  height: 30px;
+}
+
+.navbar .level-profile .profile .icon {
+  font-size: var(--fontExtraLarge);
+}
+
+.navbar .level-profile .profile .icon:hover {
+  color: var(--yellow);
+  transition: var(--transitionTime);
+}
+
 /*pages*/
 /*signin*/
 
@@ -251,66 +348,6 @@ a:active {
 }
 
 /*homepage*/
-.container .navbar {
-  display: flex;
-  justify-content: space-between;
-  padding: var(--mediumSize) var(--extraLargeSize);
-  font-size: var(--fontMedium);
-  background-color: white;
-  height: 40px;
-  align-items: center;
-  color: var(--frenchBlue);
-  white-space: nowrap;
-}
-
-.container .navbar .home-link {
-  display: flex;
-}
-
-.container .navbar .home-link:hover {
-  color: var(--yellow);
-  transition: var(--transitionTime);
-}
-
-.container .navbar .home-link .home-title {
-  padding-top: 4px;
-}
-
-.container .navbar .home-link .icon {
-  padding-right: 20px;
-  font-size: var(--fontExtraLarge);
-}
-
-.container .navbar .level-profile {
-  display: flex;
-}
-
-.container .navbar .level-profile .level {
-  padding-top: 3px;
-  padding-right: 50px;
-}
-
-.container .navbar .level-profile .level .plus-experience {
-  position: absolute;
-  top: 20px;
-  font-size: var(--fontSmall);
-  right: 405px;
-}
-
-.container .navbar .level-profile .level progress {
-  margin-left: var(--mediumSize);
-  height: 30px;
-}
-
-.container .navbar .level-profile .profile .icon {
-  font-size: var(--fontExtraLarge);
-}
-
-.container .navbar .level-profile .profile .icon:hover {
-  color: var(--yellow);
-  transition: var(--transitionTime);
-}
-
 .container .courses-container {
   padding: var(--mediumSize) var(--extraLargeSize);
   position: relative;
@@ -325,4 +362,5 @@ a:active {
   grid-template-rows: 300px 300px;
   justify-items: center;
   align-items: center;
+  margin: var(--mediumSize) 0px;
 }

@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import Navbar from "../sharedComponents/Navbar";
 import PolicyContact from "../sharedComponents/PolicyContact";
 import A1Course from "../../images/A1Course.png";
 import Course from "../sharedComponents/Course";
 
 const Home = (props) => {
-  const [plusExperience, setPlusExperience] = useState("");
-  const [enrolledCourses, setenrolledCourses] = useState([
+  const [enrolledCourses, setEnrolledCourses] = useState([
     {
       img: A1Course,
       name: "A1",
@@ -53,12 +51,6 @@ const Home = (props) => {
 
   return (
     <div className="container">
-      <Navbar
-        level="Lv.1"
-        currentExperience="10"
-        maxExperience="100"
-        plusExperience={plusExperience}
-      />
       <div className="courses-container">
         <div className="enrolled-courses">
           <h3>Tất cả các khóa học đã đăng ký</h3>
@@ -74,10 +66,18 @@ const Home = (props) => {
             ))}
           </div>
         </div>
-        <div className="available-courses">
+        <div className="enrolled-courses">
           <h3>Tất cả các khóa học khả dụng</h3>
-          <div className="available-courses-link">
-            {enrolledCourses.map((enrolledCourse, enrolledCourseId) => {})}
+          <div className="enrolled-courses-link">
+            {enrolledCourses.map((enrolledCourse) => (
+              <Course
+                key={enrolledCourse.id}
+                courseImage={enrolledCourse.img}
+                courseName={enrolledCourse.name}
+                courseImageAlt={enrolledCourse.alt}
+                coursePrice={enrolledCourse.price}
+              />
+            ))}
           </div>
         </div>
 
