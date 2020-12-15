@@ -169,17 +169,17 @@ a:active {
 .lesson-link .lesson-link-content .name-status .status {
   height: var(--smallSize);
   width: var(--smallSize);
-  background-color: none;
+  background-color: transparent;
   border-radius: 50%;
   border: 1px solid var(--frenchBlue);
   display: inline-block;
 }
 
-.lesson-link .lesson-link-content .name-status .status .current {
+.lesson-link .lesson-link-content .name-status .status.current {
   background-color: var(--frenchBlue);
 }
 
-.lesson-link .lesson-link-content .name-status .status .passed {
+.lesson-link .lesson-link-content .name-status .status.passed {
   background-color: var(--disable);
   border-color: var(--disable);
 }
@@ -380,28 +380,37 @@ a:active {
 }
 
 /*Course page*/
-.container .lesson-container {
+.container .lessons-container {
   padding: var(--mediumSize) var(--extraLargeSize);
   position: relative;
 }
 
-.container .lesson-container .icon {
+.container .lessons-container .course-infomation {
+  display: flex;
+  align-items: center;
+}
+
+.container .lessons-container .course-infomation .icon {
   color: var(--frenchBlueHover);
   font-size: var(--mediumSize);
   border: 1px solid var(--appBgColor);
   height: var(--mediumSize);
   width: var(--mediumSize);
-  position: absolute;
 }
 
-.container .lesson-container .icon:hover {
+.container .lessons-container .course-infomation .icon:hover {
   color: var(--frenchBlue);
   font-size: var(--mediumSize);
   border-radius: 50%;
   box-shadow: 3px 2px 4px var(--frenchBlueHover);
 }
 
-.container .lesson-container .lesson-container-link {
+.container .lessons-container .course-infomation .course-name{
+  font-size: var(--fontMedium);
+  margin-left: var(--smallSize)
+}
+
+.container .lessons-container .lessons-container-link {
   display: grid;
   grid-template-columns: 200px 200px 200px 200px 200px 200px;
   grid-template-rows: 300px 300px 300px;
