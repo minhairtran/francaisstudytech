@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import PolicyContact from "../sharedComponents/PolicyContact";
 import A1Course from "../../images/A1Course.png";
 import Course from "../sharedComponents/Course";
+import Navbar from "../sharedComponents/Navbar";
 
 const Home = (props) => {
+  const [plusExperience, setPlusExperience] = useState("");
   const [enrolledCourses, setEnrolledCourses] = useState([
     {
       img: A1Course,
@@ -51,6 +53,12 @@ const Home = (props) => {
 
   return (
     <div className="container">
+      <Navbar
+        level="Lv.1"
+        currentExperience="10"
+        maxExperience="100"
+        plusExperience={plusExperience}
+      />
       <div className="courses-container">
         <div className="enrolled-courses">
           <h3>Tất cả các khóa học đã đăng ký</h3>
@@ -80,7 +88,6 @@ const Home = (props) => {
             ))}
           </div>
         </div>
-
         <PolicyContact />
       </div>
     </div>

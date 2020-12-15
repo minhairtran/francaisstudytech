@@ -5,6 +5,7 @@
   --frenchBlueHover: rgba(0, 38, 84, 0.5);
   --yellowHover: rgba(221, 161, 94, 1);
   --yellow: #dda15e;
+  --disable: #DDDDDD;
   --borderRadiusSmall: 5px;
   --borderRadiusMedium: 10px;
   --borderRadiusLarge: 15px;
@@ -122,8 +123,8 @@ a:active {
 }
 
 .course-link .course-link-content img {
-  width: 200px;
-  height: 100px;
+  width: 100%;
+  height: auto;
 }
 
 /* .course-link .course-link-content .name-price {
@@ -152,22 +153,35 @@ a:active {
 }
 
 .lesson-link .lesson-link-content img {
-  width: 150px;
-  height: 100px;
+  width: 100%;
+  height: auto;
 }
 
-.lesson-link .lesson-link-content .name {
+.lesson-link .lesson-link-content .name-status {
+  text-align: center;
+}
+
+.lesson-link .lesson-link-content .name-status .name {
   padding: var(--smallSize) 0px;
   font-size: var(--fontMedium);
 }
 
-.lesson-link .lesson-link-content .status {
+.lesson-link .lesson-link-content .name-status .status {
   height: var(--smallSize);
   width: var(--smallSize);
   background-color: none;
   border-radius: 50%;
   border: 1px solid var(--frenchBlue);
   display: inline-block;
+}
+
+.lesson-link .lesson-link-content .name-status .status .current {
+  background-color: var(--frenchBlue);
+}
+
+.lesson-link .lesson-link-content .name-status .status .passed {
+  background-color: var(--disable);
+  border-color: var(--disable);
 }
 
 .navbar {
@@ -364,3 +378,36 @@ a:active {
   align-items: center;
   margin: var(--mediumSize) 0px;
 }
+
+/*Course page*/
+.container .lesson-container {
+  padding: var(--mediumSize) var(--extraLargeSize);
+  position: relative;
+}
+
+.container .lesson-container .icon {
+  color: var(--frenchBlueHover);
+  font-size: var(--mediumSize);
+  border: 1px solid var(--appBgColor);
+  height: var(--mediumSize);
+  width: var(--mediumSize);
+  position: absolute;
+}
+
+.container .lesson-container .icon:hover {
+  color: var(--frenchBlue);
+  font-size: var(--mediumSize);
+  border-radius: 50%;
+  box-shadow: 3px 2px 4px var(--frenchBlueHover);
+}
+
+.container .lesson-container .lesson-container-link {
+  display: grid;
+  grid-template-columns: 200px 200px 200px 200px 200px 200px;
+  grid-template-rows: 300px 300px 300px;
+  place-content: center;
+  align-items: center;
+  justify-content: center;
+}
+
+

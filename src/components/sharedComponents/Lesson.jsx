@@ -9,7 +9,7 @@ const Lesson = (props) => {
           <img src={props.lessonImage} alt={props.lessonImageAlt} />
           <div className="name-status">
             <div className="name">{props.lessonName}</div>
-            <div className="status"></div>
+            <div className={props.status==="passed" ? props.status==="current" ? "status current" : "status passed" : "status"}></div>
           </div>
         </div>
       </Link>
