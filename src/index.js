@@ -2,21 +2,18 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./css/web.css";
 import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Signin from "./components/auth/Signin";
-import Signup from "./components/auth/Signup";
+import App from "./App";
+import { createStore, applyMiddleware } from "redux";
+import rootReducer from "./store/reducers/rootReducer";
+import { Provider } from "react-redux"
+import thunk from 'redux-thunk';
+
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 ReactDOM.render(
-  <Router>
-    <Switch>
-      <Route exact path="/signin">
-        <Signin />
-      </Route>
-      <Route exact path="/signup">
-        <Signup />
-      </Route>
-    </Switch>
-  </Router>,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById("root")
 );
 
