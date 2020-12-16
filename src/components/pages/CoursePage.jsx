@@ -9,8 +9,8 @@ import PolicyContact from "../sharedComponents/PolicyContact";
 
 const CoursePage = (props) => {
   const courseName = props.match.params.coursename;
-  const [plusExperience, setPlusExperience] = useState("");
-  const [lessons, setLessons] = useState([
+  const [plusExperience] = useState("");
+  const [lessons] = useState([
     {
       img: A1Course,
       id: 1,

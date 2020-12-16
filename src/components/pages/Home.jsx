@@ -7,7 +7,7 @@ import { enrollCourse } from "../../store/actions/courseActions";
 
 const Home = (props) => {
   const { courses, enrollCourse } = props;
-  const [plusExperience, setPlusExperience] = useState("");
+  const [plusExperience] = useState("");
 
   const handleEnrollCourse = (course) => {
     enrollCourse(course);
