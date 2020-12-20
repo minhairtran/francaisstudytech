@@ -3,7 +3,7 @@
   --frenchBlue: #002654;
   --frenchRed: #ce1126;
   --frenchBlueHover: rgba(0, 38, 84, 0.5);
-  --yellowHover: rgba(221, 161, 94, 1);
+  --yellowHover: rgba(221, 161, 94, 0.6);
   --yellow: #dda15e;
   --disable: #DDDDDD;
   --borderRadiusSmall: 5px;
@@ -373,6 +373,7 @@ a:active {
 .container .courses-container .courses-layout .courses-link {
   display: inline-grid;
   grid-template-columns: repeat(4, 330px);
+  grid-auto-rows: 300px;
   justify-items: center;
   align-items: center;
   margin: var(--mediumSize) 0px;
@@ -415,7 +416,7 @@ a:active {
   grid-auto-rows: 300px;
   place-content: center;
   align-items: center;
-  justify-content: center;
+  justify-items: center;
 }
 
 

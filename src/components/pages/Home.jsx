@@ -4,6 +4,8 @@ import Course from "../sharedComponents/Course";
 import Navbar from "../sharedComponents/Navbar";
 import { connect } from "react-redux";
 import { enrollCourse } from "../../store/actions/courseActions";
+import { firestoreConnect } from "react-redux-firebase";
+import { compose } from "redux";
 
 const Home = (props) => {
   const { courses, enrollCourse } = props;
@@ -12,6 +14,8 @@ const Home = (props) => {
   const handleEnrollCourse = (course) => {
     enrollCourse(course);
   };
+
+  console.log(courses)
 
   return (
     <div className="container">
@@ -44,20 +48,17 @@ const Home = (props) => {
           <h3>Tất cả các khóa học khả dụng</h3>
           <div className="courses-link available-courses-link">
             {courses &&
-              courses.map(
-                (course) =>
-                  course.status === "available" && (
-                    <Course
-                      key={course.name}
-                      courseImage={course.img}
-                      courseName={course.name}
-                      courseImageAlt={course.alt}
-                      coursePrice={course.price}
-                      handleEnrollCourse={handleEnrollCourse}
-                      course={course}
-                    />
-                  )
-              )}
+              courses.map((course) => (
+                <Course
+                  key={course.name}
+                  courseImage={course.image}
+                  courseName={course.name}
+                  courseImageAlt={course.alt}
+                  coursePrice={course.price}
+                  handleEnrollCourse={handleEnrollCourse}
+                  course={course}
+                />
+              ))}
           </div>
         </div>
         <PolicyContact />
@@ -74,8 +75,11 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
   return {
-    courses: state.course.courses,
+    courses: state.firestore.ordered.courses,
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  firestoreConnect([{ collection: "courses" }])
+)(Home);
