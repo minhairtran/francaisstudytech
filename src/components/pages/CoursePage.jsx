@@ -10,8 +10,7 @@ import { compose } from "redux";
 import { connect } from "react-redux";
 
 const CoursePage = (props) => {
-  const { lessons } = props
-  const courseName = props.match.params.coursename;
+  const { lessons } = props;
   const [plusExperience] = useState("");
 
   return (
@@ -27,18 +26,19 @@ const CoursePage = (props) => {
           <Link to="/">
             <FontAwesomeIcon icon={faArrowLeft} className="icon" />
           </Link>
-          <div className="course-name">Course: {courseName.toUpperCase()}</div>
+          <div className="course-name">Course: {"as".toUpperCase()}</div>
         </div>
         <div className="lessons-container-link">
-          {lessons && lessons.map((lesson) => (
-            <Lesson
-              key={lesson.id}
-              lessonImage={lesson.image}
-              lessonName={lesson.name}
-              lessonImageAlt={lesson.alt}
-              lessonStatus={lesson.status}
-            />
-          ))}
+          {lessons &&
+            lessons.map((lesson) => (
+              <Lesson
+                key={lesson.code}
+                lessonImage={lesson.image}
+                lessonName={lesson.name}
+                lessonImageAlt={lesson.alt}
+                lessonStatus={lesson.status}
+              />
+            ))}
         </div>
         <PolicyContact />
       </div>
@@ -46,7 +46,12 @@ const CoursePage = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
+  // const id = ownProps.match.params.coursename;
+  // const allLessons = state.firestore.data.lessons;
+
+  console.log(state.firestore)
+
   return {
     lessons: state.firestore.ordered.lessons,
   };

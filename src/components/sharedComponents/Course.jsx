@@ -13,7 +13,7 @@ const Course = (props) => {
 
   return (
     <div className="course-link" onClick={() => handleEnrollCourse(course)}>
-      <Link to="/">
+      <Link to={courseName.toLowerCase()}>
         <div className="course-link-content">
           <img src={courseImage} alt={courseImageAlt} />
           <ul className="name-price">
