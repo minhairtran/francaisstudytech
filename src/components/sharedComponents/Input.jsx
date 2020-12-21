@@ -5,6 +5,7 @@ const Input = (props) => {
     <div className="input-container">
       <div className="title">{props.title}</div>
       <input
+        id={props.id}
         className="input"
         placeholder={props.placeholder}
         value={props.value}

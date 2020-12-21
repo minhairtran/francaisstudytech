@@ -4,7 +4,7 @@ const Button = (props) => {
   return (
     <div>
       {props.status !== "disable" ? (
-        <button className={props.className} onClick={props.onClick}>{props.title}</button>
+        <button className={props.className} onClick={props.onClick} type={props.type}>{props.title}</button>
       ) : (
       <button className="disable-button" disabled>{props.title}</button>
       )}

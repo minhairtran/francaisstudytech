@@ -26,7 +26,7 @@ const CoursePage = (props) => {
           <Link to="/">
             <FontAwesomeIcon icon={faArrowLeft} className="icon" />
           </Link>
-          <div className="course-name">Course: {"as".toUpperCase()}</div>
+          <div className="course-name">Course: {'chua biet'.toUpperCase()}</div>
         </div>
         <div className="lessons-container-link">
           {lessons &&
