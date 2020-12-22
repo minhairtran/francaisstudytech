@@ -49,9 +49,6 @@ const CoursePage = (props) => {
 const mapStateToProps = (state, ownProps) => {
   // const id = ownProps.match.params.coursename;
   // const allLessons = state.firestore.data.lessons;
-
-  console.log(state.firestore)
-
   return {
     lessons: state.firestore.ordered.lessons,
   };

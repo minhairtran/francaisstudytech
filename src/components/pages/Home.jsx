@@ -15,8 +15,6 @@ const Home = (props) => {
     enrollCourse(course);
   };
 
-  console.log(courses)
-
   return (
     <div className="container">
       <Navbar

@@ -5,7 +5,7 @@
   --frenchBlueHover: rgba(0, 38, 84, 0.5);
   --yellowHover: rgba(221, 161, 94, 0.6);
   --yellow: #dda15e;
-  --disable: #DDDDDD;
+  --disable: #dddddd;
   --borderRadiusSmall: 5px;
   --borderRadiusMedium: 10px;
   --borderRadiusLarge: 15px;
@@ -214,34 +214,69 @@ a:active {
   font-size: var(--fontExtraLarge);
 }
 
-.navbar .level-profile {
+.navbar .level-user-information {
   display: flex;
 }
 
-.navbar .level-profile .level {
+.navbar .level-user-information .level {
   padding-top: 3px;
   padding-right: 50px;
 }
 
-.navbar .level-profile .level .plus-experience {
+.navbar .level-user-information .level .plus-experience {
   position: absolute;
   top: 20px;
   font-size: var(--fontSmall);
   right: 405px;
 }
 
-.navbar .level-profile .level progress {
+.navbar .level-user-information .level progress {
   margin-left: var(--mediumSize);
   height: 30px;
 }
 
-.navbar .level-profile .profile .icon {
+.navbar .level-user-information .user-information {
   font-size: var(--fontExtraLarge);
 }
 
-.navbar .level-profile .profile .icon:hover {
+.navbar .level-user-information .user-information:hover > .user-information-content {
+  display: block;
+}
+
+.navbar .level-user-information .user-information .icon:hover {
   color: var(--yellow);
   transition: var(--transitionTime);
+}
+
+.navbar .level-user-information .user-information .user-information-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  overflow: auto;
+  right: 50px;
+  z-index: 1;
+  top: 75px;
+  font-size: var(--fontMedium);
+  color: var(--frenchBlue);
+  border: 1px solid var(--disable);
+  border-radius: var(--borderRadiusSmall);
+  width: calc(var(--extraLargeSize)*2);
+}
+
+.navbar .level-user-information .user-information .user-information-content .user-information-item {
+  height: var(--largeSize);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar .level-user-information .user-information .user-information-content .user-information-item:nth-child(1),
+.navbar .level-user-information .user-information .user-information-content .user-information-item:nth-child(2) {
+  border-bottom: 1px solid var(--disable);
+}
+
+.navbar .level-user-information .user-information .user-information-content .user-information-item:nth-child(3) {
+  cursor: pointer;
 }
 
 /*pages*/
@@ -405,9 +440,9 @@ a:active {
   box-shadow: 3px 2px 4px var(--frenchBlueHover);
 }
 
-.container .lessons-container .course-infomation .course-name{
+.container .lessons-container .course-infomation .course-name {
   font-size: var(--fontMedium);
-  margin-left: var(--smallSize)
+  margin-left: var(--smallSize);
 }
 
 .container .lessons-container .lessons-container-link {
@@ -418,5 +453,3 @@ a:active {
   align-items: center;
   justify-items: center;
 }
-
-
