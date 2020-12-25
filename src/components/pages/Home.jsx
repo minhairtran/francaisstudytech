@@ -6,14 +6,17 @@ import { connect } from "react-redux";
 import { enrollCourse } from "../../store/actions/courseActions";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
+import { Redirect } from "react-router-dom";
 
 const Home = (props) => {
-  const { courses, enrollCourse } = props;
+  const { courses, enrollCourse, auth } = props;
   const [plusExperience] = useState("");
 
   const handleEnrollCourse = (course) => {
     enrollCourse(course);
   };
+
+  if (!auth.loggedIn) return <Redirect to="/signin" />;
 
   return (
     <div className="container">
@@ -74,6 +77,7 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
   return {
     courses: state.firestore.ordered.courses,
+    auth: state.auth
   };
 };
 

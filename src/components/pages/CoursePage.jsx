@@ -8,10 +8,13 @@ import PolicyContact from "../sharedComponents/PolicyContact";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 
 const CoursePage = (props) => {
-  const { lessons } = props;
+  const { lessons, auth } = props;
   const [plusExperience] = useState("");
+
+  if (!auth.loggedIn) return <Redirect to="/signin" />;
 
   return (
     <div className="container">
@@ -51,6 +54,7 @@ const mapStateToProps = (state, ownProps) => {
   // const allLessons = state.firestore.data.lessons;
   return {
     lessons: state.firestore.ordered.lessons,
+    auth: state.auth,
   };
 };
 

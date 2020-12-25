@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Button from "../sharedComponents/Button";
 import Input from "../sharedComponents/Input";
 import logo from "../../images/Logo.png";
@@ -6,29 +6,24 @@ import Error from "../sharedComponents/Error";
 import { Link } from "react-router-dom";
 import PolicyContact from "../sharedComponents/PolicyContact";
 import { connect } from "react-redux";
-import { signIn } from "../../store/actions/authActions";
+import { signIn, enterCredential } from "../../store/actions/authActions";
+import { Redirect } from "react-router-dom";
 
 const Signin = (props) => {
-  const { signIn, authError } = props;
+  const { signIn, signInError, enterCredential, auth } = props;
   const [credentials, setCredentials] = useState({ email: "", password: "" });
-  const [signinError, setSigninError] = useState(false);
 
   const handleOnChange = (event) => {
     setCredentials({ ...credentials, [event.target.id]: event.target.value });
   };
 
-  const signin = (event) => {
+  const handleSignIn = (event) => {
     event.preventDefault();
     signIn(credentials);
+    if (auth.loggedIn) return <Redirect to="/" />;
   };
 
-  useEffect(() => {
-    setSigninError(authError);
-  }, [authError]);
-
-  const handleError = () => {
-    setSigninError(false);
-  };
+  if (auth.loggedIn) return <Redirect to="/" />;
 
   return (
     <div className="container">
@@ -44,9 +39,9 @@ const Signin = (props) => {
             title="Email"
             onChange={handleOnChange}
             type="email"
-            onFocus={handleError}
+            onFocus={enterCredential}
           />
-          {signinError && (
+          {signInError && (
             <Error errorMessage="Email hoặc mật khẩu không tồn tại" />
           )}
           <Input
@@ -54,7 +49,7 @@ const Signin = (props) => {
             placeholder="Nhập mật khẩu của bạn"
             title="Mật khẩu"
             onChange={handleOnChange}
-            onFocus={handleError}
+            onFocus={enterCredential}
             type="password"
           />
         </div>
@@ -70,7 +65,7 @@ const Signin = (props) => {
               ? ""
               : "disable"
           }
-          onClick={signin}
+          onClick={handleSignIn}
         />
       </div>
       <PolicyContact />
@@ -81,13 +76,15 @@ const Signin = (props) => {
 const mapStateToProps = (state) => {
   return {
     userId: state.firebase.auth.uid,
-    authError: state.auth.authError,
+    signInError: state.auth.signInError,
+    auth: state.auth,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     signIn: (credentials) => dispatch(signIn(credentials)),
+    enterCredential: () => dispatch(enterCredential()),
   };
 };
 
