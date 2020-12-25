@@ -20,7 +20,7 @@ const Signin = (props) => {
   const handleSignIn = (event) => {
     event.preventDefault();
     signIn(credentials);
-    if (auth.loggedIn) return <Redirect to="/" />;
+    if (auth.loggedIn) props.history.push("/")
   };
 
   if (auth.loggedIn) return <Redirect to="/" />;

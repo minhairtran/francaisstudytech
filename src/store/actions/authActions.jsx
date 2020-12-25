@@ -45,7 +45,7 @@ export const signUp = (account) => {
               createAt: firebase.firestore.FieldValue.serverTimestamp(),
               updateAt: firebase.firestore.FieldValue.serverTimestamp(),
             }),
-            firestore.collection("userCourseProgress").doc(resp.user.uid).set({
+            firestore.collection("usersCourseProgress").doc(resp.user.uid).set({
               courses: [],
               updateAt: firebase.firestore.FieldValue.serverTimestamp(),
             })
