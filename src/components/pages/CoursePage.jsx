@@ -11,10 +11,12 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
 const CoursePage = (props) => {
-  const { lessons, auth } = props;
+  const { lessons, isLoaded, userId } = props;
   const [plusExperience] = useState("");
 
-  if (!auth.loggedIn) return <Redirect to="/signin" />;
+  if (isLoaded) {
+    if (!userId) return <Redirect to="/signin" />;
+  }
 
   return (
     <div className="container">
@@ -50,11 +52,11 @@ const CoursePage = (props) => {
 };
 
 const mapStateToProps = (state, ownProps) => {
-  // const id = ownProps.match.params.coursename;
-  // const allLessons = state.firestore.data.lessons;
   return {
     lessons: state.firestore.ordered.lessons,
     auth: state.auth,
+    isLoaded: state.firebase.auth.isLoaded,
+    userId: state.firebase.auth.uid,
   };
 };
 

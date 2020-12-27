@@ -7,12 +7,11 @@ const Course = (props) => {
     courseImageAlt,
     courseName,
     coursePrice,
-    handleEnrollCourse,
-    course,
+    onClick,
   } = props;
 
   return (
-    <div className="course-link" onClick={() => handleEnrollCourse(course)}>
+    <div className="course-link" onClick={onClick}>
       <Link to={courseName.toLowerCase()}>
         <div className="course-link-content">
           <img src={courseImage} alt={courseImageAlt} />

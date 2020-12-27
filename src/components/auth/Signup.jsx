@@ -10,7 +10,7 @@ import { signUp, enterCredential } from "../../store/actions/authActions";
 import { Redirect } from "react-router-dom"
 
 const Signup = (props) => {
-  const { signUp, auth, enterCredential } = props;
+  const { signUp, auth, enterCredential, isLoaded, userId } = props;
   const [account, setAccount] = useState({
     email: "",
     password: "",
@@ -26,7 +26,9 @@ const Signup = (props) => {
     signUp(account);
   };
 
-  if (auth.loggedIn) return <Redirect to="/"/> 
+  if (isLoaded) {
+    if (userId) return <Redirect to="/" />;
+  }
 
   return (
     <div className="container">
@@ -106,6 +108,8 @@ const Signup = (props) => {
 const mapStateToProps = (state) => {
   return {
     auth: state.auth,
+    isLoaded: state.firebase.auth.isLoaded,
+    userId: state.firebase.auth.uid,
   };
 };
 

@@ -10,7 +10,13 @@ import { signIn, enterCredential } from "../../store/actions/authActions";
 import { Redirect } from "react-router-dom";
 
 const Signin = (props) => {
-  const { signIn, signInError, enterCredential, auth } = props;
+  const {
+    signIn,
+    signInError,
+    enterCredential,
+    userId,
+    isLoaded,
+  } = props;
   const [credentials, setCredentials] = useState({ email: "", password: "" });
 
   const handleOnChange = (event) => {
@@ -20,10 +26,12 @@ const Signin = (props) => {
   const handleSignIn = (event) => {
     event.preventDefault();
     signIn(credentials);
-    if (auth.loggedIn) props.history.push("/")
+    if (userId) props.history.push("/");
   };
 
-  if (auth.loggedIn) return <Redirect to="/" />;
+  if (isLoaded) {
+    if (userId) return <Redirect to="/" />;
+  }
 
   return (
     <div className="container">
@@ -77,7 +85,7 @@ const mapStateToProps = (state) => {
   return {
     userId: state.firebase.auth.uid,
     signInError: state.auth.signInError,
-    auth: state.auth,
+    isLoaded: state.firebase.auth.isLoaded,
   };
 };
 
