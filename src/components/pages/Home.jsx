@@ -8,7 +8,6 @@ import {
   getAllEnrolledCourses,
   enrollCourse,
 } from "../../store/actions/courseActions";
-import { compose } from "redux";
 import { Redirect } from "react-router-dom";
 
 const Home = (props) => {
@@ -20,7 +19,7 @@ const Home = (props) => {
     userId,
     isLoaded,
     isEnrolling,
-    enrollCourse
+    enrollCourse,
   } = props;
   const [plusExperience] = useState("");
 
@@ -105,6 +104,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const mapStateToProps = (state) => {
+  console.log(state)
   return {
     enrolledCourses: state.course.enrolledCourses,
     availableCourses: state.course.availableCourses,
@@ -115,4 +115,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default compose(connect(mapStateToProps, mapDispatchToProps))(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

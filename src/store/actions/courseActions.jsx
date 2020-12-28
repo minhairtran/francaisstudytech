@@ -47,15 +47,25 @@ export const enrollCourse = (userId, course) => {
             courseName: course.name,
             enrollAt: new Date(),
           }),
+          updateAt: new Date(),
         },
         { merge: true }
       )
       .then(() => {
-        console.log(course);
+        firestore
+          .collection("usersLessonProgress")
+          .doc(userId + course.name)
+          .set({
+            courseName: course.name,
+            lessons: [],
+            updateAt: new Date(),
+          });
+      })
+      .then(() =>
         dispatch({
           type: ACTION_TYPE.ENROLL_COURSE,
-        });
-      })
+        })
+      )
       .catch((error) => console.log(error));
   };
 };
@@ -76,7 +86,6 @@ export const getAllEnrolledCourses = (userId) => {
           );
       })
       .then(() => {
-        console.log(enrolledCoursesName);
         firestore
           .collection("courses")
           .where("name", "in", enrolledCoursesName)

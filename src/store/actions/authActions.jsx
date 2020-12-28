@@ -1,6 +1,8 @@
+import { ACTION_TYPE } from "../reducers/authReducer"
+
 export const enterCredential = () => {
   return (dispatch, getState) => {
-    dispatch({ type: "ENTER_CREDENTIAL" });
+    dispatch({ type: ACTION_TYPE.ENTER_CREDENTIAL });
   };
 };
 
@@ -10,10 +12,10 @@ export const signIn = (credentials) => {
     auth
       .signInWithEmailAndPassword(credentials.email, credentials.password)
       .then(() => {
-        dispatch({ type: "LOGIN_SUCCESS" });
+        dispatch({ type: ACTION_TYPE.LOGIN_SUCCESS });
       })
       .catch((err) => {
-        dispatch({ type: "LOGIN_ERROR", err });
+        dispatch({ type: ACTION_TYPE.LOGIN_ERROR, err });
       });
   };
 };
@@ -22,7 +24,7 @@ export const signOut = () => {
   return (dispatch, getState, { firebase }) => {
     const auth = firebase.auth();
     auth.signOut().then(() => {
-      dispatch({ type: "LOGOUT_SUCCESS" });
+      dispatch({ type: ACTION_TYPE.LOGOUT_SUCCESS });
     });
   };
 };
@@ -56,11 +58,11 @@ export const signUp = (account) => {
           emailVerification(account.email, firebase, dispatch);
         })
         .catch((err) => {
-          dispatch({ type: "SIGNUP_ERROR", err });
+          dispatch({ type: ACTION_TYPE.SIGNUP_ERROR, err });
         });
     } else {
       dispatch({
-        type: "SIGNUP_ERROR_PASSWORD_CONFIRMATION",
+        type: ACTION_TYPE.SIGNUP_ERROR_PASSWORD_CONFIRMATION,
         err: "Password được nhập lại không đúng",
       });
     }
@@ -112,7 +114,7 @@ export const emailVerification = (email, firebase, dispatch) => {
             // Common errors could be invalid email and invalid or expired OTPs.
           });
       }
-      dispatch({ type: "SIGNUP_SUCCESS" });
+      dispatch({ type: ACTION_TYPE.SIGNUP_SUCCESS });
     })
     .catch(function (error) {
     });
