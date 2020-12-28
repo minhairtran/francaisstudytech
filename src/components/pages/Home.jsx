@@ -20,6 +20,7 @@ const Home = (props) => {
     userId,
     isLoaded,
     isEnrolling,
+    enrollCourse
   } = props;
   const [plusExperience] = useState("");
 

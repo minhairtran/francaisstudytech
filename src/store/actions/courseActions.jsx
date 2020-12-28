@@ -11,7 +11,9 @@ export const getAllAvailableCourses = (userId) => {
       .then((userCourseProgress) => {
         userCourseProgress
           .data()
-          .courses.forEach((course) => enrolledCoursesName.push(course.name));
+          .courses.forEach((course) =>
+            enrolledCoursesName.push(course.courseName)
+          );
       })
       .then(() =>
         firestore
@@ -35,20 +37,21 @@ export const getAllAvailableCourses = (userId) => {
 
 export const enrollCourse = (userId, course) => {
   return (dispatch, getstate, { firebase }) => {
-    console.log(course);
     const firestore = firebase.firestore();
     firestore
       .collection("usersCourseProgress")
       .doc(userId)
-      .set({
-        courses: [
-          {
+      .update(
+        {
+          courses: firebase.firestore.FieldValue.arrayUnion({
             courseName: course.name,
-            enrollAt: firebase.firestore.FieldValue.serverTimestamp(),
-          },
-        ],
-      })
+            enrollAt: new Date(),
+          }),
+        },
+        { merge: true }
+      )
       .then(() => {
+        console.log(course);
         dispatch({
           type: ACTION_TYPE.ENROLL_COURSE,
         });
@@ -68,9 +71,12 @@ export const getAllEnrolledCourses = (userId) => {
       .then((userCourseProgress) => {
         userCourseProgress
           .data()
-          .courses.forEach((course) => enrolledCoursesName.push(course.name));
+          .courses.forEach((course) =>
+            enrolledCoursesName.push(course.courseName)
+          );
       })
-      .then(() =>
+      .then(() => {
+        console.log(enrolledCoursesName);
         firestore
           .collection("courses")
           .where("name", "in", enrolledCoursesName)
@@ -85,7 +91,7 @@ export const getAllEnrolledCourses = (userId) => {
               payload: { enrolledCourses },
             });
           })
-          .catch((error) => console.log(error))
-      );
+          .catch((error) => console.log(error));
+      });
   };
 };
