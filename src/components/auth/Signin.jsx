@@ -34,7 +34,7 @@ const Signin = (props) => {
   }
 
   return (
-    <div className="container">
+    <>
       <div className="registration">
         <img src={logo} alt="logo" />
         <div className="registration-link">
@@ -77,7 +77,7 @@ const Signin = (props) => {
         />
       </div>
       <PolicyContact />
-    </div>
+    </>
   );
 };
 

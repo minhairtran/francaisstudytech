@@ -20,6 +20,9 @@
   --buttonWidth: 183px;
   --buttonHeight: 60px;
   --transitionTime: 0.3s;
+  --borderWidthSmall: 1px;
+  --borderWidthMedium: 2px;
+  --borderWidthLarge: 3px;
 }
 
 body {
@@ -239,7 +242,10 @@ a:active {
   font-size: var(--fontExtraLarge);
 }
 
-.navbar .level-user-information .user-information:hover > .user-information-content {
+.navbar
+  .level-user-information
+  .user-information:hover
+  > .user-information-content {
   display: block;
 }
 
@@ -260,22 +266,38 @@ a:active {
   color: var(--frenchBlue);
   border: 1px solid var(--disable);
   border-radius: var(--borderRadiusSmall);
-  width: calc(var(--extraLargeSize)*2);
+  width: calc(var(--extraLargeSize) * 2);
 }
 
-.navbar .level-user-information .user-information .user-information-content .user-information-item {
+.navbar
+  .level-user-information
+  .user-information
+  .user-information-content
+  .user-information-item {
   height: var(--largeSize);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.navbar .level-user-information .user-information .user-information-content .user-information-item:nth-child(1),
-.navbar .level-user-information .user-information .user-information-content .user-information-item:nth-child(2) {
+.navbar
+  .level-user-information
+  .user-information
+  .user-information-content
+  .user-information-item:nth-child(1),
+.navbar
+  .level-user-information
+  .user-information
+  .user-information-content
+  .user-information-item:nth-child(2) {
   border-bottom: 1px solid var(--disable);
 }
 
-.navbar .level-user-information .user-information .user-information-content .user-information-item:nth-child(3) {
+.navbar
+  .level-user-information
+  .user-information
+  .user-information-content
+  .user-information-item:nth-child(3) {
   cursor: pointer;
 }
 
@@ -452,4 +474,34 @@ a:active {
   place-content: center;
   align-items: center;
   justify-items: center;
+}
+
+.container .lesson-container {
+  padding: var(--mediumSize) var(--extraLargeSize);
+}
+
+.container .lesson-container .lesson-general-information {
+  display: flex;
+  place-items: center;
+}
+
+.container .lesson-container .lesson-general-information .icon {
+  color: var(--frenchBlueHover);
+  font-size: var(--mediumSize);
+  border: 1px solid var(--appBgColor);
+  height: var(--mediumSize);
+  width: var(--mediumSize);
+}
+
+.container .lesson-container .lesson-general-information .icon:hover {
+  color: var(--frenchBlue);
+  font-size: var(--mediumSize);
+  border-radius: 50%;
+  box-shadow: 3px 2px 4px var(--frenchBlueHover);
+}
+
+.container .lesson-container .lesson-general-information .question-number {
+  border: var(--borderWidthLarge) solid var(--frenchBlue);
+  padding: 5px var(--smallSize);
+  margin-left: var(--mediumSize);
 }

@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import PolicyContact from "../sharedComponents/PolicyContact";
 import Course from "../sharedComponents/Course";
-import Navbar from "../sharedComponents/Navbar";
 import { connect } from "react-redux";
 import {
   getAllAvailableCourses,
@@ -21,7 +20,6 @@ const Home = (props) => {
     isEnrolling,
     enrollCourse,
   } = props;
-  const [plusExperience] = useState("");
 
   const handleEnrollCourse = (course) => {
     if (userId) {
@@ -49,13 +47,6 @@ const Home = (props) => {
   }
 
   return (
-    <div className="container">
-      <Navbar
-        level="Lv.1"
-        currentExperience="10"
-        maxExperience="100"
-        plusExperience={plusExperience}
-      />
       <div className="courses-container">
         <div className="courses-layout enrolled-courses">
           <h3>Tất cả các khóa học đã đăng ký</h3>
@@ -90,7 +81,6 @@ const Home = (props) => {
         </div>
         <PolicyContact />
       </div>
-    </div>
   );
 };
 
@@ -104,7 +94,6 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state)
   return {
     enrolledCourses: state.course.enrolledCourses,
     availableCourses: state.course.availableCourses,

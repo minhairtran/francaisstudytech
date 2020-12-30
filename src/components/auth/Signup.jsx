@@ -31,7 +31,7 @@ const Signup = (props) => {
   }
 
   return (
-    <div className="container">
+    <>
       <div className="signup">
         <img src={logo} alt="logo" />
         <div className="registration-link">
@@ -101,7 +101,7 @@ const Signup = (props) => {
         )}
       </div>
       <PolicyContact />
-    </div>
+    </>
   );
 };
 

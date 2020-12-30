@@ -7,7 +7,7 @@ export const ACTION_TYPE = {
 const initState = {
   availableCourses: [],
   enrolledCourses: [],
-  isEnrolling: false,
+  isEnrolling: null,
 };
 
 const courseReducer = (state = initState, action) => {

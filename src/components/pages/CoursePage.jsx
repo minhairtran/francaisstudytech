@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import Lesson from "../sharedComponents/Lesson";
-import Navbar from "../sharedComponents/Navbar";
 import { Link } from "react-router-dom";
 import PolicyContact from "../sharedComponents/PolicyContact";
 import { connect } from "react-redux";
@@ -24,7 +23,6 @@ const CoursePage = (props) => {
     passedLessons,
     undoneLessons,
   } = props;
-  const [plusExperience] = useState("");
 
   useEffect(() => {
     if (isLoaded) {
@@ -42,53 +40,45 @@ const CoursePage = (props) => {
   }
 
   return (
-    <div className="container">
-      <Navbar
-        level="Lv.1"
-        currentExperience="10"
-        maxExperience="100"
-        plusExperience={plusExperience}
-      />
-      <div className="lessons-container">
-        <div className="course-infomation">
-          <Link to="/">
-            <FontAwesomeIcon icon={faArrowLeft} className="icon" />
-          </Link>
-          <div className="course-name">Course: {"chua biet".toUpperCase()}</div>
-        </div>
-        <div className="lessons-container-link">
-          {passedLessons.passedLessons &&
-            passedLessons.passedLessons.map((lesson) => (
-              <Lesson
-                key={lesson.lessonName}
-                lessonImage={lesson.image}
-                lessonName={lesson.name}
-                lessonImageAlt={lesson.alt}
-                lessonStatus={lesson.status}
-              />
-            ))}
-          {currentLesson && currentLesson.currentLesson && (
-            <Lesson
-              key={currentLesson.currentLesson.lessonName}
-              lessonImage={currentLesson.currentLesson.image}
-              lessonName={currentLesson.currentLesson.name}
-              lessonImageAlt={currentLesson.currentLesson.alt}
-              lessonStatus={currentLesson.currentLesson.status}
-            />
-          )}
-          {undoneLessons.undoneLessons &&
-            undoneLessons.undoneLessons.map((lesson) => (
-              <Lesson
-                key={lesson.lessonName}
-                lessonImage={lesson.image}
-                lessonName={lesson.name}
-                lessonImageAlt={lesson.alt}
-                lessonStatus={lesson.status}
-              />
-            ))}
-        </div>
-        <PolicyContact />
+    <div className="lessons-container">
+      <div className="course-infomation">
+        <Link to="/">
+          <FontAwesomeIcon icon={faArrowLeft} className="icon" />
+        </Link>
+        <div className="course-name">Course: {"chua biet".toUpperCase()}</div>
       </div>
+      <div className="lessons-container-link">
+        {passedLessons.passedLessons &&
+          passedLessons.passedLessons.map((lesson) => (
+            <Lesson
+              key={lesson.lessonName}
+              lessonImage={lesson.image}
+              lessonName={lesson.name}
+              lessonImageAlt={lesson.alt}
+              lessonStatus={lesson.status}
+            />
+          ))}
+        {currentLesson && currentLesson.currentLesson && (
+          <Lesson
+            key={currentLesson.currentLesson.lessonName}
+            lessonImage={currentLesson.currentLesson.image}
+            lessonName={currentLesson.currentLesson.name}
+            lessonImageAlt={currentLesson.currentLesson.alt}
+            lessonStatus={currentLesson.currentLesson.status}
+          />
+        )}
+        {undoneLessons.undoneLessons &&
+          undoneLessons.undoneLessons.map((lesson) => (
+            <Lesson
+              key={lesson.lessonName}
+              lessonImage={lesson.image}
+              lessonName={lesson.name}
+              lessonImageAlt={lesson.alt}
+              lessonStatus={lesson.status}
+            />
+          ))}
+      </div>
+      <PolicyContact />
     </div>
   );
 };
