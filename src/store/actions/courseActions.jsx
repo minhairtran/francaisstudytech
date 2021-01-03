@@ -38,6 +38,9 @@ export const getAllAvailableCourses = (userId) => {
 export const enrollCourse = (userId, course) => {
   return (dispatch, getstate, { firebase }) => {
     const firestore = firebase.firestore();
+    dispatch({
+      type: ACTION_TYPE.ENROLL_COURSE,
+    })
     firestore
       .collection("usersCourseProgress")
       .doc(userId)
@@ -63,7 +66,7 @@ export const enrollCourse = (userId, course) => {
       })
       .then(() =>
         dispatch({
-          type: ACTION_TYPE.ENROLL_COURSE,
+          type: ACTION_TYPE.ENROLL_COURSE_SUCCESS,
         })
       )
       .catch((error) => console.log(error));

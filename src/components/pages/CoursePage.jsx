@@ -25,17 +25,17 @@ const CoursePage = (props) => {
     undoneLessons,
     match,
     isEnteringClass,
+    isEnrolling,
   } = props;
 
   useEffect(() => {
     if (isLoaded) {
-      if (userId) {
+      if (userId && !isEnrolling) {
         const courseName = match.params.coursename.toUpperCase();
-        setTimeout(() => {
-          getCurrentLesson(userId, courseName);
-          getPassedLessons(userId, courseName);
-          getUndoneLessons(userId, courseName);
-        }, 1500);
+
+        getCurrentLesson(userId, courseName);
+        getPassedLessons(userId, courseName);
+        getUndoneLessons(userId, courseName);
       }
     }
   }, [
@@ -45,6 +45,7 @@ const CoursePage = (props) => {
     getUndoneLessons,
     getPassedLessons,
     match,
+    isEnrolling,
   ]);
 
   const handleEnteringClass = (lesson, userId) => {
@@ -129,6 +130,7 @@ const mapStateToProps = (state) => {
     auth: state.auth,
     isLoaded: state.firebase.auth.isLoaded,
     userId: state.firebase.auth.uid,
+    isEnrolling: state.course.isEnrolling,
   };
 };
 
