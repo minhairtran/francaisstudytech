@@ -70,6 +70,30 @@ export const enrollCourse = (userId, course) => {
   };
 };
 
+export const getAllEnrolledCoursesName = (userId) => {
+  return (dispatch, getState, { firebase }) => {
+    const firestore = firebase.firestore();
+    let enrolledCoursesName = [];
+    firestore
+      .collection("usersCourseProgress")
+      .doc(userId)
+      .get()
+      .then((userCourseProgress) => {
+        userCourseProgress
+          .data()
+          .courses.forEach((course) =>
+            enrolledCoursesName.push(course.courseName)
+          );
+      })
+      .then(
+        dispatch({
+          type: ACTION_TYPE.GET_ALL_ENROLLED_COURSES_NAME,
+          payload: enrolledCoursesName,
+        })
+      );
+  };
+};
+
 export const getAllEnrolledCourses = (userId) => {
   return (dispatch, getstate, { firebase }) => {
     const firestore = firebase.firestore();

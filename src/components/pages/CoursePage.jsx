@@ -10,6 +10,7 @@ import {
   getCurrentLesson,
   getUndoneLessons,
   getPassedLessons,
+  isEnteringClass,
 } from "../../store/actions/lessonActions";
 
 const CoursePage = (props) => {
@@ -22,18 +23,35 @@ const CoursePage = (props) => {
     currentLesson,
     passedLessons,
     undoneLessons,
+    match,
+    isEnteringClass,
   } = props;
 
   useEffect(() => {
     if (isLoaded) {
       if (userId) {
-        const courseName = window.location.pathname.substring(1).toUpperCase();
-        getCurrentLesson(userId, courseName);
-        getUndoneLessons(userId, courseName);
-        getPassedLessons(userId, courseName);
+        const courseName = match.params.coursename.toUpperCase();
+        setTimeout(() => {
+          getCurrentLesson(userId, courseName);
+          getPassedLessons(userId, courseName);
+          getUndoneLessons(userId, courseName);
+        }, 1500);
       }
     }
-  }, [isLoaded, userId, getCurrentLesson, getUndoneLessons, getPassedLessons]);
+  }, [
+    isLoaded,
+    userId,
+    getCurrentLesson,
+    getUndoneLessons,
+    getPassedLessons,
+    match,
+  ]);
+
+  const handleEnteringClass = (lesson, userId) => {
+    if (lesson && userId) {
+      isEnteringClass(userId, lesson);
+    }
+  };
 
   if (isLoaded) {
     if (!userId) return <Redirect to="/signin" />;
@@ -51,30 +69,37 @@ const CoursePage = (props) => {
         {passedLessons.passedLessons &&
           passedLessons.passedLessons.map((lesson) => (
             <Lesson
-              key={lesson.lessonName}
+              key={lesson.lessonCode}
               lessonImage={lesson.image}
-              lessonName={lesson.name}
+              lessonCode={lesson.lessonCode}
               lessonImageAlt={lesson.alt}
               lessonStatus={lesson.status}
+              courseName={lesson.courseName}
+              lessonName={lesson.name}
             />
           ))}
         {currentLesson && currentLesson.currentLesson && (
           <Lesson
-            key={currentLesson.currentLesson.lessonName}
+            key={currentLesson.currentLesson.lessonCode}
             lessonImage={currentLesson.currentLesson.image}
-            lessonName={currentLesson.currentLesson.name}
+            lessonCode={currentLesson.currentLesson.lessonCode}
             lessonImageAlt={currentLesson.currentLesson.alt}
+            courseName={currentLesson.courseName}
             lessonStatus={currentLesson.currentLesson.status}
+            lessonName={currentLesson.name}
           />
         )}
         {undoneLessons.undoneLessons &&
           undoneLessons.undoneLessons.map((lesson) => (
             <Lesson
-              key={lesson.lessonName}
+              key={lesson.lessonCode}
               lessonImage={lesson.image}
-              lessonName={lesson.name}
+              lessonCode={lesson.lessonCode}
               lessonImageAlt={lesson.alt}
+              courseName={lesson.courseName}
               lessonStatus={lesson.status}
+              onClick={handleEnteringClass.bind(this, lesson, userId)}
+              lessonName={lesson.name}
             />
           ))}
       </div>
@@ -91,6 +116,8 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(getPassedLessons(userId, courseName)),
     getUndoneLessons: (userId, courseName) =>
       dispatch(getUndoneLessons(userId, courseName)),
+    isEnteringClass: (userId, lesson) =>
+      dispatch(isEnteringClass(userId, lesson)),
   };
 };
 

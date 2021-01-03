@@ -9,14 +9,18 @@ export const getUndoneLessons = (userId, courseName) => {
       .doc(userId + courseName)
       .get()
       .then((userLessonProgress) => {
-        userLessonProgress.data().lessons.forEach((lesson) => {
-          passedAndCurrentLessonsName.push(lesson.lessonName);
-        });
+        if (userLessonProgress.data()) {
+          userLessonProgress.data().lessons.forEach((lesson) => {
+            if (lesson.lessonName) {
+              passedAndCurrentLessonsName.push(lesson.lessonName);
+            }
+          });
+        }
       })
       .then(() =>
         firestore
           .collection("lessons")
-          .where("lessonName", "not-in", passedAndCurrentLessonsName)
+          .where("lessonCode", "not-in", passedAndCurrentLessonsName)
           .where("courseName", "==", courseName)
           .get()
           .then((lessons) => {
@@ -43,15 +47,17 @@ export const getCurrentLesson = (userId, courseName) => {
       .doc(userId + courseName)
       .get()
       .then((userLessonProgress) => {
-        userLessonProgress.data().lessons.forEach((lesson) => {
-          if (lesson.status === "current")
-            currentLessonsName = lesson.lessonName;
-        });
+        if (userLessonProgress.data()) {
+          userLessonProgress.data().lessons.forEach((lesson) => {
+            if (lesson.status === "current")
+              currentLessonsName = lesson.lessonName;
+          });
+        }
       })
       .then(() =>
         firestore
           .collection("lessons")
-          .where("lessonName", "==", currentLessonsName)
+          .where("lessonCode", "==", currentLessonsName)
           .where("courseName", "==", courseName)
           .get()
           .then((lesson) => {
@@ -78,15 +84,17 @@ export const getPassedLessons = (userId, courseName) => {
       .doc(userId + courseName)
       .get()
       .then((userLessonProgress) => {
-        userLessonProgress.data().lessons.forEach((lesson) => {
-          if (lesson.status === "passed")
-            passedLessonsName.push(lesson.lessonName);
-        });
+        if (userLessonProgress.data()) {
+          userLessonProgress.data().lessons.forEach((lesson) => {
+            if (lesson.status === "passed")
+              passedLessonsName.push(lesson.lessonName);
+          });
+        }
       })
       .then(() =>
         firestore
           .collection("lessons")
-          .where("lessonName", "in", passedLessonsName)
+          .where("lessonCode", "in", passedLessonsName)
           .where("courseName", "==", courseName)
           .get()
           .then((lessons) => {
@@ -105,5 +113,40 @@ export const getPassedLessons = (userId, courseName) => {
 };
 
 export const isEnteringClass = (userId, lesson) => {
-  return (dispatch, getstate, { firebase }) => {};
+  return (dispatch, getstate, { firebase }) => {
+    const firestore = firebase.firestore();
+
+    const questions = [];
+
+    lesson.questions.forEach((questionCode) => {
+      questions.push({ questionCode, answered: false });
+    });
+
+    firestore
+      .collection("usersLessonProgress")
+      .doc(userId + lesson.courseName)
+      .update(
+        {
+          lessons: firebase.firestore.FieldValue.arrayUnion({
+            lessonCode: lesson.lessonCode,
+            status: "undone",
+            startAt: new Date(),
+            endAt: new Date(),
+            grammarVocabulary: {
+              grammarVocabularyCode: lesson.grammarVocabularyCode,
+              seen: false,
+            },
+            questions,
+          }),
+          updateAt: new Date(),
+        },
+        { merge: true }
+      )
+      .then(() =>
+        dispatch({
+          type: ACTION_TYPE.IS_ENTERING_CLASS,
+        })
+      )
+      .catch((error) => console.log(error));
+  };
 };

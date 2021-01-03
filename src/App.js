@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Signin from "./components/auth/Signin";
 import Signup from "./components/auth/Signup";
@@ -8,9 +8,24 @@ import CoursePage from "./components/pages/CoursePage";
 import LessonPage from "./components/pages/LessonPage";
 import { connect } from "react-redux";
 import Navbar from "./components/sharedComponents/Navbar";
+import { getAllEnrolledCoursesName } from "./store/actions/courseActions";
+import ErrorPage from "./components/pages/ErrorPage";
 
 const App = (props) => {
-  const { userId } = props;
+  const {
+    userId,
+    getAllEnrolledCoursesName,
+    // enrolledCoursesName,
+    isLoaded,
+  } = props;
+
+  useEffect(() => {
+    if (isLoaded) {
+      getAllEnrolledCoursesName(userId);
+    }
+    //eslint-disable-next-line
+  }, [isLoaded]);
+
   return (
     <div className="container">
       <Router>
@@ -23,12 +38,17 @@ const App = (props) => {
           />
         )}
         <Switch>
-          <Route exact path="/" component={Home} />
           <Route exact path="/signin" component={Signin} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/profile" component={Profile} />
-          <Route path="/lessonname" component={LessonPage} />
-          <Route path="/:coursename" component={CoursePage} />
+          <Route exact path="/:coursename/:lessonname" component={LessonPage} />
+          <Route
+            exact
+            path="/:coursename"
+            component={CoursePage}
+          />
+          <Route exact path="/" component={Home} />
+          <Route path="*" component={ErrorPage} />
         </Switch>
       </Router>
     </div>
@@ -38,7 +58,16 @@ const App = (props) => {
 const mapStateToProps = (state) => {
   return {
     userId: state.firebase.auth.uid,
+    enrolledCoursesName: state.course.enrolledCoursesName,
+    isLoaded: state.firebase.auth.isLoaded,
   };
 };
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getAllEnrolledCoursesName: (userId) =>
+      dispatch(getAllEnrolledCoursesName(userId)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
