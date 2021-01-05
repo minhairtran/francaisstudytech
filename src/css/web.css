@@ -41,6 +41,14 @@ code {
 
 /*Reusable components*/
 
+span {
+  white-space: pre;
+}
+
+button:focus {
+  outline: none;
+}
+
 .input-container {
   font-size: var(--fontMedium);
 }
@@ -504,4 +512,33 @@ a:active {
   border: var(--borderWidthLarge) solid var(--frenchBlue);
   padding: 5px var(--smallSize);
   margin-left: var(--mediumSize);
+}
+
+.container .lesson-container .lesson-general-information .question-name {
+  margin-left: var(--mediumSize);
+}
+
+.container .lesson-container .answer-question-button {
+  width: var(--extraLargeSize);
+  height: var(--largeSize);
+  font: var(--fontMedium);
+}
+
+.container .lesson-container .question {
+  margin: var(--largeSize) 65px;
+}
+
+.container .lesson-container .question .answers {
+  margin: var(--extraLargeSize) 0px;
+}
+
+.container .lesson-container .question .filling-in-the-blank .answers .answer {
+  height: var(--largeSize);
+  padding: 0px var(--mediumSize);
+  border: none;
+  cursor: pointer;
+  font: var(--fontMedium);
+  box-shadow: 4px 4px 2px var(--frenchBlue);
+  background-color: white;
+  margin-right: var(--mediumSize);
 }
